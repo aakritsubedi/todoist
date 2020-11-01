@@ -52,6 +52,8 @@ body: Center(
 
 - add a **widgets** TaskCardWidget  
 with title and description of task to display in card like strucutre  
-refer to [this](./lib/widgets.dart) file.
+refer to [this](./lib/widgets.dart) file.  
+now simply stack the floating button at the bottom of the screen.  
 **Output**
 ![Task Card Widget](./screenshots/taskCardWidget.png)
+

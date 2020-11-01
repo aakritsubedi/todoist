@@ -40,6 +40,21 @@ class _MyHomePageState extends State<MyHomePage> {
                     )
                   ],
                 ),
+                Positioned(
+                  bottom: 0.0,
+                  right: 0.0,
+                  child: Container(
+                    height: 50.0,
+                    width: 50.0,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF02e7ea),
+                      borderRadius: BorderRadius.circular(25.0)
+                    ),
+                    child: Image(
+                      image: AssetImage('assets/images/add_icon.png'),
+                    )
+                  ),
+                )
               ],
             ),
           ),
