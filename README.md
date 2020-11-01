@@ -47,5 +47,11 @@ body: Center(
     ), //Padding
   ); //Center
 ```
-**Output**
+**Output**  
 ![Initial Screen](./screenshots/initialScreen.png)
+
+- add a **widgets** TaskCardWidget  
+with title and description of task to display in card like strucutre  
+refer to [this](./lib/widgets.dart) file.
+**Output**
+![Task Card Widget](./screenshots/taskCardWidget.png)
