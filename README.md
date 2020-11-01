@@ -47,13 +47,64 @@ body: Center(
     ), //Padding
   ); //Center
 ```
+
 **Output**  
 ![Initial Screen](./screenshots/initialScreen.png)
 
 - add a **widgets** TaskCardWidget  
-with title and description of task to display in card like strucutre  
-refer to [this](./lib/widgets.dart) file.  
-now simply stack the floating button at the bottom of the screen.  
-**Output**
-![Task Card Widget](./screenshots/taskCardWidget.png)
+  with title and description of task to display in card like strucutre  
+  refer to [this](./lib/widgets.dart) file.  
+  now simply stack the floating button at the bottom of the screen.  
+  **Output**
+  ![Task Card Widget](./screenshots/taskCardWidget.png)
 
+- Add a gesture detector in the floating button that navigate to task page on tap
+
+```dart
+GestureDetector(
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => TaskPage()
+      ),
+    );
+},
+```
+
+Now, on the **taskPage** add an arrow and TextField inside the container
+
+```dart
+child: Row(
+  children: [
+    InkWell(
+      onTap: () {
+        Navigator.pop(context);
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Image(
+          image: AssetImage('assets/images/back_arrow_icon.png')),
+        ),
+      ),
+      Expanded(
+        child: TextField(
+        decoration: InputDecoration(
+          hintText: 'Enter the task title',
+          border: InputBorder.none),
+          style: TextStyle(
+            fontSize: 26.0,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF211551)),
+        ),
+      )
+  ],
+),
+```
+now start adding content to display the tasks
+the taskPage file is linked [here](./lib/pages/taskPage.dart).
+**Output**
+![Inital UI Demo](./screenshots/initialDemo.gif)
+
+---
+Thank You
