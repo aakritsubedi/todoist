@@ -202,7 +202,7 @@ class _TaskPageState extends State<TaskPage> {
                                   Todo _newTodo = Todo(
                                     title: value,
                                     isDone: 0,
-                                    taskId: _taskI d,
+                                    taskId: _taskId,
                                   );
                                   await _databaseHelper.insertTodo(_newTodo);
                                   setState(() {});
