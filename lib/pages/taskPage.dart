@@ -125,6 +125,7 @@ class _TaskPageState extends State<TaskPage> {
                       if (value != "") {
                         if (_taskId != 0) {
                           await _databaseHelper.updateTaskDescription(_taskId, value);
+                          _taskDescription = value;
                         } 
 
                         _descriptionFocus.requestFocus();
@@ -201,7 +202,7 @@ class _TaskPageState extends State<TaskPage> {
                                   Todo _newTodo = Todo(
                                     title: value,
                                     isDone: 0,
-                                    taskId: widget.task.id,
+                                    taskId: _taskI d,
                                   );
                                   await _databaseHelper.insertTodo(_newTodo);
                                   setState(() {});
@@ -230,11 +231,11 @@ class _TaskPageState extends State<TaskPage> {
                 bottom: 24.0,
                 right: 24.0,
                 child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => TaskPage( task: null)),
-                    );
+                  onTap: () async {
+                    if(_taskId != 0) {
+                      await _databaseHelper.deleteTask(_taskId);
+                      Navigator.pop(context);
+                    }
                   },
                   child: Container(
                       height: 50.0,
