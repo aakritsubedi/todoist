@@ -43,11 +43,10 @@ class TaskCardWidget extends StatelessWidget {
 }
 
 class TodoWidget extends StatelessWidget {
-
   final String text;
   final bool isDone;
 
-  TodoWidget({ this.text, @required this.isDone });
+  TodoWidget({this.text, @required this.isDone});
 
   @override
   Widget build(BuildContext context) {
@@ -62,21 +61,19 @@ class TodoWidget extends StatelessWidget {
               decoration: BoxDecoration(
                   color: isDone ? Color(0xFF7349FF) : Colors.transparent,
                   borderRadius: BorderRadius.circular(6.0),
-                  border: isDone ? null : Border.all(
-                    color: Color(0xFF868290),
-                    width: 1.5
-                  )
-              ),
+                  border: isDone
+                      ? null
+                      : Border.all(color: Color(0xFF868290), width: 1.5)),
               child: Image(
                 image: AssetImage('assets/images/check_icon.png'),
               )),
-          Text(text ?? '<unamaed task>',
-              style: TextStyle(
-                  color: isDone ? Color(0xFF211551) : Color(0xFF869290),
-                  fontSize: 16.0,
-                  fontWeight: isDone ? FontWeight.bold : FontWeight.w500 
-                )
-              )
+          Flexible(
+            child: Text(text ?? '<unamaed task>',
+                style: TextStyle(
+                    color: isDone ? Color(0xFF211551) : Color(0xFF869290),
+                    fontSize: 16.0,
+                    fontWeight: isDone ? FontWeight.bold : FontWeight.w500)),
+          )
         ],
       ),
     );
@@ -86,7 +83,7 @@ class TodoWidget extends StatelessWidget {
 class NoGlowBehaviour extends ScrollBehavior {
   @override
   Widget buildViewportChrome(
-    BuildContext context, Widget child, AxisDirection axisDirection) {
+      BuildContext context, Widget child, AxisDirection axisDirection) {
     return child;
   }
 }

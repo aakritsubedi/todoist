@@ -58,7 +58,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                   },
                                   child: TaskCardWidget(
                                       title: snapshot.data[index].title,
-                                      desc: snapshot.data[index].description),
+                                      desc: snapshot.data[index].description
+                                    ),
                                 );
                               }),
                         );
