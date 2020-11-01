@@ -106,7 +106,12 @@ the taskPage file is linked [here](./lib/pages/taskPage.dart).
 **Output**
 ![Inital UI Demo](./screenshots/initialDemo.gif)
 
-- use sqlite to store the database
+- use sqlite to store the database 
+- add function to create, read, update and delete the tasks and todos
 
----
-Thank You
+### Demo 
+![Demo](./screenshots/finalDemo.gif)
+
+### APK file
+[Click here](./todoist.apk) to download the apk file.
+
