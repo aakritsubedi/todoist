@@ -13,12 +13,22 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-          child: Text('Todoist',
-              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold))),
-    );
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 15.0, 0, 0),
+            child: Column(
+              children: [
+                Image(
+                  image: AssetImage('assets/images/logo.png'),
+                ),
+                Text('Todoist',
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold)),
+              ],
+            ),
+          ),
+        ));
   }
 }
