@@ -101,10 +101,12 @@ child: Row(
   ],
 ),
 ```
-now start adding content to display the tasks
-the taskPage file is linked [here](./lib/pages/taskPage.dart).
+now start adding content to display the tasks  
+the taskPage file is linked [here](./lib/pages/taskPage.dart).  
 **Output**
 ![Inital UI Demo](./screenshots/initialDemo.gif)
+
+- use sqlite to store the database
 
 ---
 Thank You

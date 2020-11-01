@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoist/databaseHelper.dart';
 import 'package:todoist/pages/taskPage.dart';
 import 'package:todoist/widgets.dart';
 
@@ -12,6 +13,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  DatabaseHelper _databaseHelper = DatabaseHelper();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,26 +36,33 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     Expanded(
-                        child: ScrollConfiguration(
-                      behavior: NoGlowBehaviour(),
-                      child: ListView(
-                        children: [
-                          TaskCardWidget(
-                              title: 'Get Started!!',
-                              desc:
-                                  'Hello boss!! Welcome to Todoist app, this is a default task that you can edit or delete to get started.'),
-                          TaskCardWidget(
-                            title: 'Your second task',
-                          ),
-                          TaskCardWidget(
-                              title: 'Get Started!!',
-                              desc:
-                                  'Hello boss!! Welcome to Todoist app, this is a default task that you can edit or delete to get started.'),
-                          TaskCardWidget(
-                            title: 'Your second task',
-                          )
-                        ],
-                      ),
+                        child: FutureBuilder(
+                      initialData: [],
+                      future: _databaseHelper.getTasks(),
+                      builder: (context, snapshot) {
+                        return ScrollConfiguration(
+                          behavior: NoGlowBehaviour(),
+                          child: ListView.builder(
+                              itemCount: snapshot.data.length,
+                              itemBuilder: (context, index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => TaskPage(
+                                        task: snapshot.data[index],
+                                      )),
+                                    ).then((value) {
+                                      setState(() {});
+                                    });
+                                  },
+                                  child: TaskCardWidget(
+                                      title: snapshot.data[index].title,
+                                      desc: snapshot.data[index].description),
+                                );
+                              }),
+                        );
+                      },
                     ))
                   ],
                 ),
@@ -63,8 +73,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => TaskPage()),
-                      );
+                        MaterialPageRoute(builder: (context) => TaskPage(task: null)),
+                      ).then((value) {
+                        setState(() {});
+                      });
                     },
                     child: Container(
                         height: 50.0,
